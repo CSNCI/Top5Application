@@ -9,13 +9,21 @@ workflows:
           branches:
             only:
              - main
-    - deploy:
+    - test:
         filters:
           branches:
             only:
              - main
         requires:
          - build
+    - deploy:
+        filters:
+          branches:
+            only:
+             - main
+        requires:
+         - test
+         
 
 jobs:
   build:
