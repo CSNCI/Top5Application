@@ -9,21 +9,13 @@ workflows:
           branches:
             only:
              - main
-    - test:
-        filters:
-          branches:
-            only:
-             - main
-        requires:
-         - build
     - deploy:
         filters:
           branches:
             only:
              - main
         requires:
-         - test
-         
+         - build        
 
 jobs:
   build:
@@ -44,16 +36,6 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json"}}
           paths:
             - ./node_modules
-  test:
-    steps:
-      - attach_workspace:
-          at: .
-      - checkout
-      - run: cd ./app && npm run test
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
   deploy:
     docker:
       - image: cimg/node:16.14.0
