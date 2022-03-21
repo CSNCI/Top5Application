@@ -5,9 +5,124 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+background-color: #e2e0d9;
+}
+main {
+  min-height: 77vh !important;
+  background-color:#e2e0d9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.App {
+  text-align: center;
+  min-height: 100vh;
+ background-color:#e2e0d9;
+}
+/* Header */
+
+.Header-top {
+  background-color: #0d0d0e;
+  color: white;
+  height: 30px;
+  width: 100%;
+}
+.App-header {
+  background-color: #e2e0d9;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  padding-top: 0px;
+}
+
+.Header-navBar {
+  border-top: #4d4d4e;
+  border-width: thin;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  width: 100%;
+}
+
+.Header-bottom {
+  background-color: #e2e0d9;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: calc(10px + 2vmin);
+  font-weight: bolder;
+  color: black;
+  margin-bottom: 40px;
+  padding-top: 50px;
+}
+.Logo {
+  width: 100%;
+  width: fit-content;
+  padding: 10px;
+}
+
+/* Footer */
+
+.Footer {
+  color: white;
+  background-color: #0d0d0e;
+  padding: 15px;
+
+}
+/* profile */
+.name{
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.profession{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(196, 13, 13) ;
+  font-style: italic;
+  font-size: 38px;
+}
+
+.name-small{
+  font-size: 25px;
+}
+/* COPY to be changed */
+.card {
+  border: solid;
+  border-radius: 5px;
+  background-color: #fff;
+  height: auto;
+}
+.description{
+  margin: 30px;
+}
+
+.cards {
+  margin-top: 100px;
+  border: solid;
+  border-radius: 5px;
+  background-color: #fff;
+  height: 300px;
+}
+
+.number2 {
+  font-weight: 500;
+}
+
+.rating {
+  font-size: 10px;
+  color: #a1aab9;
+}
+
+.number3 {
+  font-weight: 500;
 }

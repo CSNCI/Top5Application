@@ -1,0 +1,48 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+    - build:
+        filters:
+          branches:
+            only:
+             - main
+    - deploy:
+        filters:
+          branches:
+            only:
+             - main
+        requires:
+         - build
+
+jobs:
+  build:
+    working_directory: ~/top5_application
+    docker:
+      - image: cimg/node:16.14.0
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@5'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json"}}
+      - run:
+          name: install-npm
+          command: npm install
+      - run:
+          name: test-npm
+          command: npm run test
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json"}}
+          paths:
+            - ./node_modules
+  deploy:
+    docker:
+      - image: cimg/node:16.14.0
+    steps:
+      - run:
+          name: deploy-application
+          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "rm -rf Top5Application/;git clone https://github.com/CSNCI/Top5Application.git; source Top5Application/deploy.sh"
